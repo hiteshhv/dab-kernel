@@ -13,7 +13,7 @@ TELEGRAM=telegram/telegram
 export TELEGRAM_TOKEN
 # Push kernel installer to channel
 function push() {
-	JIP=$(echo DAB*.zip)
+	JIP=$(echo Genom*.zip)
 	curl -F document=@$JIP  "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendDocument" \
 			-F chat_id="$TELEGRAM_ID"
 }
@@ -61,7 +61,7 @@ BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 CORES=$(grep -c ^processor /proc/cpuinfo)
 THREAD="-j$CORES"
 CROSS_COMPILE+="ccache "
-CROSS_COMPILE+="$PWD/toolchain/bin/aarch64-linux-gnu-"
+CROSS_COMPILE+="$PWD/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu/bin/aarch64-linux-gnu-"
 
 # Modules environtment
 OUTDIR="$PWD/out/"
@@ -74,7 +74,7 @@ STRIP="$PWD/stock/bin/$(echo "$(find "$PWD/stock/bin" -type f -name "aarch64-*-g
 export JOBS="$(grep -c '^processor' /proc/cpuinfo)"
 export ARCH=arm64
 export SUBARCH=arm64
-export KBUILD_BUILD_USER="hiteshhv"
+export KBUILD_BUILD_USER="ramakun"
 export CROSS_COMPILE
 
 # Install build package
@@ -97,7 +97,7 @@ BUILD_START=$(date +"%s")
 
 tg_sendstick
 
-tg_channelcast "DAB kernel for Custom AOSP ROM new build!" \
+tg_channelcast "GENOM kernel for Custom AOSP ROM new build!" \
         "Only for device <b>vince</b> (Redmi 5 Plus)" \
     	"Using toolchain: <code>$($PWD/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu/bin/aarch64-linux-gnu-gcc --version | head -1)</code>" \
 	"Under <code>android_kernel_xiaomi_msm8953-4.9/${BRANCH}</code>" \
@@ -127,4 +127,4 @@ DIFF=$(($BUILD_END - $BUILD_START))
 
 fin
 
-# Build end 
+# Build end
