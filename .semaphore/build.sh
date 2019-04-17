@@ -10,6 +10,9 @@
 git clone https://github.com/fabianonline/telegram.sh telegram
 TELEGRAM_ID=-1001232319637
 TELEGRAM=telegram/telegram
+TELEGRAM_TOKEN=${BOT_API_KEY}
+
+
 export TELEGRAM_TOKEN
 # Push kernel installer to channel
 function push() {
