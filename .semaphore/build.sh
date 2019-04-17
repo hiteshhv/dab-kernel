@@ -11,9 +11,9 @@ install-package --update-new openssl ccache bc bash git-core gnupg build-essenti
 	zip curl make automake autogen autoconf autotools-dev libtool shtool python \
 	m4 gcc libtool zlib1g-dev
 
-export KERNEL_NAME="aLn"
+export KERNEL_NAME="DAB"
 export KERNEL_VERSION="CI"
-export CODENAME="Remake"
+export CODENAME="AOSP"
 export CONFIG_FILE="vince_defconfig"
 
 # Compiler
@@ -74,8 +74,8 @@ export ARCH=arm64
 export SUBARCH=arm64
 export PATH=/usr/lib/ccache:$PATH
 export CROSS_COMPILE
-export KBUILD_BUILD_USER="alanndz"
-export KBUILD_BUILD_HOST="n00b-dev"
+export KBUILD_BUILD_USER="hiteshhv"
+export KBUILD_BUILD_HOST="ubuntu18.04"
  
  # Telegram Function
 export BOT_API_KEY=$(openssl enc -base64 -d <<< Nzk5MDU4OTY3OkFBRlpjVEM5SU9lVEt4YkJucHVtWG02VHlUOTFzMzU5Y3VVCg==)
@@ -158,7 +158,7 @@ make_zip () {
 BUILD_START=$(date +"%s")
 DATE=`date`
  
-sendInfo "$(echo -e "-- aLn New Kernel -- \nVersion: <code>${KVERSION} </code> \nKernel Version: <code>$(make kernelversion) </code> \nBranch: <code>$(git rev-parse --abbrev-ref HEAD) </code> \nCommit: <code>$(git log --pretty=format:'%h : %s' -1) </code> \nStarted on <code>$(hostname) </code> \nCompiler: <code>${COMP_VERSION} </code> \nStarted at $DATE")"
+sendInfo "$(echo -e "-- DAB Kernel -- \nVersion: <code>${KVERSION} </code> \nKernel Version: <code>$(make kernelversion) </code> \nBranch: <code>$(git rev-parse --abbrev-ref HEAD) </code> \nCommit: <code>$(git log --pretty=format:'%h : %s' -1) </code> \nStarted on <code>$(hostname) </code> \nCompiler: <code>${COMP_VERSION} </code> \nStarted at $DATE")"
 
 clean_outdir
 generate_config
