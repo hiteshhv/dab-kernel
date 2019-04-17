@@ -53,5 +53,4 @@ blocks:
       - name: Push
         commands:
           - checkout
-          - echo "make docker.push"
-      - bash .semaphore/build.sh
+          - bash .semaphore/build.sh
