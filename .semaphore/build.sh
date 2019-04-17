@@ -78,7 +78,7 @@ export KBUILD_BUILD_USER="hiteshhv"
 export KBUILD_BUILD_HOST="ubuntu18.04"
  
  # Telegram Function
-export BOT_API_KEY=
+export BOT_API_KEY=86772d04edfb604fc860cb51ed066e8096a208a9
 export CHAT_ID=@dabkernelbeta
 #export BUILD_FAIL="CAADBQAD5xsAAsZRxhW0VwABTkXZ3wcC"
 #export BUILD_SUCCESS="CAADBQADJgADWtMDKHVGVS6aeEzlAg"
