@@ -61,7 +61,7 @@ BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 CORES=$(grep -c ^processor /proc/cpuinfo)
 THREAD="-j$CORES"
 CROSS_COMPILE+="ccache "
-CROSS_COMPILE+="$PWD/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu/bin/aarch64-linux-gnu-"
+CROSS_COMPILE+="$PWD/toolchain/bin/aarch64-linux-gnu-"
 
 # Modules environtment
 OUTDIR="$PWD/out/"
