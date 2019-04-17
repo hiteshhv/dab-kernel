@@ -14,7 +14,7 @@ install-package --update-new openssl ccache bc bash git-core gnupg build-essenti
 export KERNEL_NAME="DAB"
 export KERNEL_VERSION="CI"
 export CODENAME="AOSP"
-export CONFIG_FILE="vince_defconfig"
+export CONFIG_FILE="vince-perf_defconfig"
 
 # Compiler
 # 0 GCC 4.9
@@ -73,15 +73,15 @@ fi
 export ARCH=arm64
 export SUBARCH=arm64
 export PATH=/usr/lib/ccache:$PATH
-export CROSS_COMPILE
+export CROSS_COMPILE=/home/hiteshvijay7/dab/toolchain/bin/aarch64-linux-android-
 export KBUILD_BUILD_USER="hiteshhv"
 export KBUILD_BUILD_HOST="ubuntu18.04"
  
  # Telegram Function
-export BOT_API_KEY=$(openssl enc -base64 -d <<< Nzk5MDU4OTY3OkFBRlpjVEM5SU9lVEt4YkJucHVtWG02VHlUOTFzMzU5Y3VVCg==)
-export CHAT_ID=$(openssl enc -base64 -d <<< LTEwMDEyMzAyMDQ5MjMK)
-export BUILD_FAIL="CAADBQAD5xsAAsZRxhW0VwABTkXZ3wcC"
-export BUILD_SUCCESS="CAADBQADJgADWtMDKHVGVS6aeEzlAg"
+export BOT_API_KEY=
+export CHAT_ID=@dabkernelbeta
+#export BUILD_FAIL="CAADBQAD5xsAAsZRxhW0VwABTkXZ3wcC"
+#export BUILD_SUCCESS="CAADBQADJgADWtMDKHVGVS6aeEzlAg"
  
 if [ $BREL -eq 0 ]; then
 	if [ "${CODENAME}" ]; then
@@ -119,11 +119,11 @@ function sendLog() {
 	curl -F chat_id="671339354" -F document=@"$BUILDLOG" https://api.telegram.org/bot$BOT_API_KEY/sendDocument &>/dev/null
 }
  
-generate_config() {
+function makeconfig() {
 	make O=${OUTDIR} $CONFIG_FILE savedefconfig
 }
  
-clean_outdir() {
+function cleanconfig() {
     make O=${OUTDIR} clean
     make mrproper
     rm -rf ${OUTDIR}/*
@@ -160,8 +160,8 @@ DATE=`date`
  
 sendInfo "$(echo -e "-- DAB Kernel -- \nVersion: <code>${KVERSION} </code> \nKernel Version: <code>$(make kernelversion) </code> \nBranch: <code>$(git rev-parse --abbrev-ref HEAD) </code> \nCommit: <code>$(git log --pretty=format:'%h : %s' -1) </code> \nStarted on <code>$(hostname) </code> \nCompiler: <code>${COMP_VERSION} </code> \nStarted at $DATE")"
 
-clean_outdir
-generate_config
+cleanconfig
+makeconfig
 
 #compile
 if [[ $COMP -eq 0 || $COMP -eq 1 ]]; then
