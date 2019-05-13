@@ -7,11 +7,6 @@ agent:
 blocks:
   - name: "Build"
     task:
-      secrets:
-        - name: tg_token
-      env_vars:
-        - name: APP_ENV
-          value: prod
       jobs:
       - name: Compile Kernel
         commands:
